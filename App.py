@@ -50,7 +50,7 @@ def app():
     unsafe_allow_html=True
 )
     st.write('<p style="font-style:italic; color: #D4AF37;">© Dave Fagarita</p>', unsafe_allow_html=True)
-    st.markdown("""<hr style="height:10px;border:none;color:#333;background-color:#333;" /> """, unsafe_allow_html=True) 
+    st.markdown("""<hr style="height:5px;border:none;color:#333;background-color:#333;" /> """, unsafe_allow_html=True) 
 
     with st.echo(code_location='below'):
         def custom_remove_stopwords(text, is_lower_case=False):
