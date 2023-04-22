@@ -217,69 +217,60 @@ def app():
             sizes = [counts[0], counts[1]]
             custom_colours = ['#3b528b', '#21918c']
 
-            fig = plt.figure(figsize=(8, 3), dpi=100)
-            plt.subplot(1, 2, 1)
-            plt.pie(sizes, labels = labels, textprops={'fontsize': 10}, startangle=140, \
-                    autopct='%1.0f%%', colors=custom_colours, explode=[0, 0.05])
-            plt.subplot(1, 2, 2)
-            sns.barplot(x = labels, y = sizes, \
-                    palette = 'viridis')
-            st.pyplot(fig)
-            
-            st.subheader('Negative Sentiment')
-            
-            st.write('Word cloud of the negative sentiment')
-            
-            text = " ".join(result[result['Sentiment'] == 'Negative']['text'])
-            fig = plt.figure(figsize = (8, 4))
-            wordcloud = WordCloud(max_words=500, height= 800, width = 1500,  \
-                                  background_color="black", colormap= 'inferno').generate(text)
-            plt.imshow(wordcloud, interpolation='bilinear')
-            plt.axis('off')
-            st.pyplot(fig)
-            
-            all_nodep_words = []
-            for sentence in result[result['Sentiment'] == 'Negative']['text'].to_list():
-                for word in sentence.split():
-                   all_nodep_words.append(word)
+            col1, col2 = st.columns(2)
 
-            df = pd.DataFrame(Counter(all_nodep_words).most_common(25), columns= ['Word', 'Frequency'])
+            # column 1 - Negative Sentiment
+            with col1:
+                st.subheader('Negative Sentiment')
+                st.write('Word cloud of the negative sentiment')
+                text = " ".join(result[result['Sentiment'] == 'Negative']['text'])
+                fig = plt.figure(figsize = (8, 4))
+                wordcloud = WordCloud(max_words=500, height= 800, width = 1500,  \
+                                      background_color="black", colormap= 'inferno').generate(text)
+                plt.imshow(wordcloud, interpolation='bilinear')
+                plt.axis('off')
+                st.pyplot(fig)
+                all_nodep_words = []
+                for sentence in result[result['Sentiment'] == 'Negative']['text'].to_list():
+                    for word in sentence.split():
+                       all_nodep_words.append(word)
 
-            sns.set_context('notebook', font_scale= 1)
-            fig = plt.figure(figsize=(8,4))
-            sns.barplot(y = df['Word'], x= df['Frequency'], palette= 'summer')
-            plt.title("Negative Sentiment Most Commonly Used Words")
-            plt.xlabel("Frequency")
-            plt.ylabel("Words")
-            st.pyplot(fig)
-            
-            
-            st.subheader('Positive Sentiment')
-            
-            st.write('Word cloud of the positive sentiment')
-            
-            text = " ".join(result[result['Sentiment'] == 'Positive']['text'])
-            fig = plt.figure(figsize = (8, 4))
-            wordcloud = WordCloud(max_words=500, height= 800, width = 1500,  \
-                                  background_color="black", colormap= 'viridis').generate(text)
-            plt.imshow(wordcloud, interpolation='bilinear')
-            plt.axis('off')
-            st.pyplot(fig)
-            
-            all_nodep_words = []
-            for sentence in result[result['Sentiment'] == 'Positive']['text'].to_list():
-                for word in sentence.split():
-                   all_nodep_words.append(word)
+                df = pd.DataFrame(Counter(all_nodep_words).most_common(25), columns= ['Word', 'Frequency'])
 
-            df = pd.DataFrame(Counter(all_nodep_words).most_common(25), columns= ['Word', 'Frequency'])
+                sns.set_context('notebook', font_scale= 1)
+                fig = plt.figure(figsize=(8,4))
+                sns.barplot(y = df['Word'], x= df['Frequency'], palette= 'summer')
+                plt.title("Negative Sentiment Most Commonly Used Words")
+                plt.xlabel("Frequency")
+                plt.ylabel("Words")
+                st.pyplot(fig)
 
-            sns.set_context('notebook', font_scale= 1)
-            fig = plt.figure(figsize=(8,4))
-            sns.barplot(y = df['Word'], x= df['Frequency'], palette= 'summer')
-            plt.title("Positive Sentiment Most Commonly Used Words")
-            plt.xlabel("Frequency")
-            plt.ylabel("Words")
-            st.pyplot(fig)
+
+            # column 2 - Positive Sentiment
+            with col2:
+                st.subheader('Positive Sentiment')
+                st.write('Word cloud of the positive sentiment')
+                text = " ".join(result[result['Sentiment'] == 'Positive']['text'])
+                fig = plt.figure(figsize = (8, 4))
+                wordcloud = WordCloud(max_words=500, height= 800, width = 1500,  \
+                                      background_color="black", colormap= 'viridis').generate(text)
+                plt.imshow(wordcloud, interpolation='bilinear')
+                plt.axis('off')
+                st.pyplot(fig)
+                all_nodep_words = []
+                for sentence in result[result['Sentiment'] == 'Positive']['text'].to_list():
+                    for word in sentence.split():
+                       all_nodep_words.append(word)
+
+                df = pd.DataFrame(Counter(all_nodep_words).most_common(25), columns= ['Word', 'Frequency'])
+
+                sns.set_context('notebook', font_scale= 1)
+                fig = plt.figure(figsize=(8,4))
+                sns.barplot(y = df['Word'], x= df['Frequency'], palette= 'summer')
+                plt.title("Positive Sentiment Most Commonly Used Words")
+                plt.xlabel("Frequency")
+                plt.ylabel("Words")
+                st.pyplot(fig)
                                             
             # Save the dataframe to a CSV file
             csv = result.to_csv(index=False)
