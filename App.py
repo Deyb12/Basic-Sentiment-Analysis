@@ -47,7 +47,7 @@ def app():
     # Load and show image in the right column
     with right_column:
         image = 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGFhNzYxNmQyZTgxNjYyYzc0MTQ2MWY3N2Q5YWM3MTIyY2VlY2ZmNyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PXM/yQozijZ4xS8krYs1Rp/giphy.gif'
-        st.image(image, width=500, align=center)
+        st.image(image, width=500, align='center')
 
 
     
