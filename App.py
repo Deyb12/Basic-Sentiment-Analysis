@@ -41,7 +41,7 @@ def app():
     with left_column:
         st.subheader('Sentiment Analysis')
         st.write('This sentiment analysis will check whether the students of ISAT University Students will agree or disagree that it is more necessary to study grammar than to practice conversation skills.')
-        st.write('The respondent of my analysis are from the said University. Special thanks to my highschool friend (Currently enrolled at ISAT-U Miagao Campus) that help me gather and distribute the survey form.')
+        st.write('The respondents in my analysis are from the aforementioned university. I would like to express my special thanks to my high school friends, who are currently enrolled at ISAT-U Miagao Campus, for helping me gather and distribute the survey form.')
 
     # Load and show image in the right column
     with right_column:
@@ -50,8 +50,6 @@ def app():
     unsafe_allow_html=True
 )
 
-
-    
     with st.echo(code_location='below'):
         def custom_remove_stopwords(text, is_lower_case=False):
             tokens = tokenizer.tokenize(text)
@@ -118,7 +116,7 @@ def app():
             train = shuffle(df)
             
             
-            st.write('There were 20 responses and we display them in the table below.')
+            st.write('Preview of the Dataset:')
             st.dataframe(train, use_container_width=True)
    
             st.write('Dataset shape: ')
@@ -132,8 +130,8 @@ def app():
                 st.write(train.isnull().sum())
                 st.success('No null values found.')
 
-            with st.spinner('Preprocessing data...'):
-                st.text('Doing pre-processing tasks...')
+            with st.spinner('Preprocessing the data...'):
+                st.text('Doing pre-processing techniques...')
 
                 with st.spinner('Removing symbols...'):
                     train.replace(r'^\s*$', np.nan, regex=True, inplace=True)
@@ -172,14 +170,14 @@ def app():
                     train['text'] = train['text'].apply(remove_numbers)
                     st.success('Numbers removed successfully.')
 
-                st.text('We look at our dataset after more pre-processing steps')
+                st.text('Initial Pre-processing steps')
                 st.write(train.head(50))
 
                 with st.spinner('Removing alpha numeric data...'):
                     train['text'] = train['text'].apply(remove_alphanumeric)
                     st.success('Alpha-numeric data removed successfully.')
 
-                st.text('We look at our dataset after the pre-processing steps')
+                st.text('Final Pre-processing steps')
                 st.write(train.head(50))
 
                 with st.spinner('Lemmatizing words...'):
@@ -191,7 +189,7 @@ def app():
             #We use the TextBlob tweet sentiment function to get the sentiment
             train['sentiment']=train['text'].apply(lambda tweet: TextBlob(tweet).sentiment)
             
-            st.write('We look at our dataset after more pre-processing steps')
+            st.write('Preprocessed Dataset:')
             st.dataframe(train, use_container_width=True)
 
             sentiment_series=train['sentiment'].tolist()
@@ -207,7 +205,7 @@ def app():
             result.loc[result['label']=="0", 'Sentiment_label'] = 0
             result.drop(['label'],axis=1, inplace=True)
             
-            st.write('We view the dataset after the sentiment labels are updated.')
+            st.write('Preprocessed data sentiment labels updated.')
             result = result.sort_values(by=['Sentiment'], ascending=False)
             st.dataframe(result, use_container_width=True)
 
@@ -217,7 +215,7 @@ def app():
             #reads the sample count from the previous line
             labels = ['Negative','Positive']
             sizes = [counts[0], counts[1]]
-            custom_colours = ['#ff7675', '#74b9ff']
+            custom_colours = ['#F2543D', '#38C477']
 
             fig = plt.figure(figsize=(8, 3), dpi=100)
             plt.subplot(1, 2, 1)
