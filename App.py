@@ -46,7 +46,7 @@ def app():
 
     # Load and show image in the right column
     with right_column:
-        image = Image.open('hero.gif')
+        image = 'https://cdn.dribbble.com/users/69182/screenshots/4793955/media/6c720c9418aa5c308281b4a237dc25bc.gif'
         st.image(image, width=500)
 
 
