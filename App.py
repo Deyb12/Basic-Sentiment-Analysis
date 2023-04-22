@@ -33,7 +33,6 @@ def app():
 
     # Set page title
     st.write('<h1 style="font-family: monospace; font-weight:bold; color: #D4AF37;">Sentiment Analysis</h1>', unsafe_allow_html=True)
-    st.text('© Dave Fagarita')
 
     # Create two columns
     left_column, right_column = st.columns(2)
@@ -50,6 +49,7 @@ def app():
     f'<div style="display: flex; justify-content: center;"><img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGFhNzYxNmQyZTgxNjYyYzc0MTQ2MWY3N2Q5YWM3MTIyY2VlY2ZmNyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PXM/yQozijZ4xS8krYs1Rp/giphy.gif" style="width:100%; max-width:600px;" /></div>',
     unsafe_allow_html=True
 )
+    st.write('© Dave Fagarita')
 
     with st.echo(code_location='below'):
         def custom_remove_stopwords(text, is_lower_case=False):
