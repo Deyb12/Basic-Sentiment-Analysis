@@ -239,7 +239,7 @@ def app():
 
                     sns.set_context('notebook', font_scale= 1)
                     fig = plt.figure(figsize=(8,4))
-                    sns.barplot(y = df['Word'], x= df['Frequency'], palette= 'summer')
+                    sns.barplot(y = df['Word'], x= df['Frequency'], palette= 'inferno')
                     plt.title("Negative Sentiment Most Commonly Used Words")
                     plt.xlabel("Frequency")
                     plt.ylabel("Words")
