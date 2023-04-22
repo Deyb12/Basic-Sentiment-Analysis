@@ -223,7 +223,7 @@ def app():
                     autopct='%1.0f%%', colors=custom_colours, explode=[0, 0.05])
             plt.subplot(1, 2, 2)
             sns.barplot(x = labels, y = sizes, \
-                    palette= 'viridis')
+                    colors=custom_colours)
             st.pyplot(fig)
             
             st.subheader('Negative Sentiment')
