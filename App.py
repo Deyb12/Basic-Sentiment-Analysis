@@ -205,7 +205,7 @@ def app():
                 result.loc[result['label']=="0", 'Sentiment_label'] = 0
                 result.drop(['label'],axis=1, inplace=True)
 
-                st.write('Preprocessed data sentiment labels updated.')
+                st.write('Preprocessed data with sentiment labels updated.')
                 result = result.sort_values(by=['Sentiment'], ascending=False)
                 st.dataframe(result, use_container_width=True)
 
