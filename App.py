@@ -46,7 +46,7 @@ def app():
     # Load and show image in the right column
     with right_column:
         st.markdown(
-    f'<div style="display: flex; justify-content: center;"><img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGFhNzYxNmQyZTgxNjYyYzc0MTQ2MWY3N2Q5YWM3MTIyY2VlY2ZmNyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PXM/yQozijZ4xS8krYs1Rp/giphy.gif" style="width:100%; max-width:600px;" /></div>',
+    f'<div style="display: flex; justify-content: center;"><img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGFhNzYxNmQyZTgxNjYyYzc0MTQ2MWY3N2Q5YWM3MTIyY2VlY2ZmNyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PXM/yQozijZ4xS8krYs1Rp/giphy.gif" style="width:100%; max-width:600px; position: absolute; top: 0; transform: translate(0, -50%);" /></div>',
     unsafe_allow_html=True
 )
 
