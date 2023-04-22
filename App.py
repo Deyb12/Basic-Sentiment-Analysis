@@ -120,8 +120,7 @@ def app():
             st.write('Preview of the Dataset:')
             st.dataframe(train, use_container_width=True)
    
-            st.write('Dataset shape: ')
-            st.text(df.shape)
+            st.write('Dataset shape: ', df.shape)
 
             # Define preprocessing functions here...
 
