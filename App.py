@@ -215,7 +215,7 @@ def app():
             #reads the sample count from the previous line
             labels = ['Negative','Positive']
             sizes = [counts[0], counts[1]]
-            custom_colours = ['#F2543D', '#38C477']
+            custom_colours = ['#3b528b', '#21918c']
 
             fig = plt.figure(figsize=(8, 3), dpi=100)
             plt.subplot(1, 2, 1)
