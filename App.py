@@ -32,7 +32,7 @@ def app():
     
 
     # Set page title
-    st.write('<h1 style="color: #D4AF37;">Sentiment Analysis</h1>', unsafe_allow_html=True)
+    st.write('<h1 style="font-family: monospace; font-weight:bold; color: #D4AF37;">Sentiment Analysis</h1>', unsafe_allow_html=True)
 
     # Create two columns
     left_column, right_column = st.columns(2)
