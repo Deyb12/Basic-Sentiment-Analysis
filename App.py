@@ -15,7 +15,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import base64
 from wordcloud import WordCloud
-from collections import Counter
+from collections
+import time
+import Counter
 
 def app():
     
@@ -112,65 +114,109 @@ def app():
             st.write('Dataset shape: ')
             st.text(df.shape)
         
-            st.write('Checking for null values. Do not proceed if we find a null value.')
-            st.write(train.isnull().sum())
-            
-            st.write('We begin pre-processing the data.  The steps are necessary to clean up \
-            the dataset and achieve better results from the classifier. Some steps are \
-            resource-heavy so be patient and check the animated "running" indicator \
-            at the upper right is showing that the page is still alive and running.')
-            
-            st.text('Doing pre-processing tasks...')
-            st.text('Removing symbols...')
-            train.replace(r'^\s*$', np.nan, regex=True, inplace=True)
-            train.dropna(axis=0, how='any', inplace=True)
+            import time
 
-            st.text('Removing escape sequences...')
-            train.replace(to_replace=[r"\\t|\\n|\\r", "\t|\n|\r"], value=["",""], regex=True, inplace=True)
-         
-            st.text('Removing non ascii data...')
-            train['text']=train['text'].str.encode('ascii', 'ignore').str.decode('ascii')
-         
-            st.write('Removing punctuations...')
-            train['text']=train['text'].apply(remove_punctuations)
- 
-            st.write('In Natural Language Processing (NLP), stopwords refer to commonly \
-            occurring words in a language that are often filtered out from the text before \
-            processing. These words typically do not contribute much to the meaning of a \
-            sentence and are used primarily to connect other words together. \nExamples of \
-            stopwords in the English language include "the," "a," "an," "and," "in," "on," \
-            "at," "for," "to," "of," "with," and so on.')
-            
-            st.write('Removing stop words...')
-            train['text']=train['text'].apply(custom_remove_stopwords)
-            
-            st.write('Removing special characters...')
-            train['text']=train['text'].apply(remove_special_characters)
-            
-            st.write('Removing HTML...')
-            train['text']=train['text'].apply(remove_html)
-            
-            st.write('Removing URL...')
-            train['text']=train['text'].apply(remove_URL)    
-            
-            st.write('Removing numbers...')
-            train['text']=train['text'].apply(remove_numbers) 
-            
-            st.text('We look at our dataset after more pre-processing steps')
-            st.write(train.head(50))    
+# Check for null values
 
-            st.write('Removing alpha numeric data...')
-            train['text']=train['text'].apply(remove_alphanumeric)
-            st.text('We look at our dataset after the pre-processing steps')
-            st.write(train.head(50))
+st.write('Checking for null values. Do not proceed if we find a null value.')
 
-            st.write('We lemmatize the words. \
-                      \nThis process could take up to several minutes to complete. Please wait....')
+st.write(train.isnull().sum())
 
-            train['text']=train['text'].apply(lemmatize_text)
-            
-            #We use the TextBlob tweet sentiment function to get the sentiment
-            train['sentiment']=train['text'].apply(lambda tweet: TextBlob(tweet).sentiment)
+# Remove symbols
+
+with st.spinner('Removing symbols...'):
+
+    train.replace(r'^\s*$', np.nan, regex=True, inplace=True)
+
+    train.dropna(axis=0, how='any', inplace=True)
+
+st.success('Symbols removed successfully.')
+
+# Remove escape sequences
+
+with st.spinner('Removing escape sequences...'):
+
+    train.replace(to_replace=[r"\\t|\\n|\\r", "\t|\n|\r"], value=["",""], regex=True, inplace=True)
+
+st.success('Escape sequences removed successfully.')
+
+# Remove non-ascii characters
+
+with st.spinner('Removing non ascii data...'):
+
+    train['text']=train['text'].str.encode('ascii', 'ignore').str.decode('ascii')
+
+st.success('Non ascii data removed successfully.')
+
+# Remove punctuations
+
+with st.spinner('Removing punctuations...'):
+
+    train['text']=train['text'].apply(remove_punctuations)
+
+st.success('Punctuations removed successfully.')
+
+# Remove stop words
+
+with st.spinner('Removing stop words...'):
+
+    train['text']=train['text'].apply(custom_remove_stopwords)
+
+st.success('Stop words removed successfully.')
+
+# Remove special characters
+
+with st.spinner('Removing special characters...'):
+
+    train['text']=train['text'].apply(remove_special_characters)
+
+st.success('Special characters removed successfully.')
+
+# Remove HTML tags
+
+with st.spinner('Removing HTML...'):
+
+    train['text']=train['text'].apply(remove_html)
+
+st.success('HTML tags removed successfully.')
+
+# Remove URLs
+
+with st.spinner('Removing URL...'):
+
+    train['text']=train['text'].apply(remove_URL)
+
+st.success('URLs removed successfully.')
+
+# Remove numbers
+
+with st.spinner('Removing numbers...'):
+
+    train['text']=train['text'].apply(remove_numbers)
+
+st.success('Numbers removed successfully.')
+
+# Remove alphanumeric characters
+
+with st.spinner('Removing alpha numeric data...'):
+
+    train['text']=train['text'].apply(remove_alphanumeric)
+
+st.success('Alphanumeric data removed successfully.')
+
+# Lemmatize words
+
+with st.spinner('Lemmatizing words...'):
+
+    train['text']=train['text'].apply(lemmatize_text)
+
+st.success('Words lemmatized successfully.')
+
+# Display preprocessed dataset
+
+st.write('We look at our dataset after the pre-processing steps')
+
+st.write(train.head(50))
             
             st.write('We look at our dataset after more pre-processing steps')
             st.dataframe(train, use_container_width=True)
