@@ -22,7 +22,6 @@ from PIL import Image
 
 def app():
     
-    import nltk
     from nltk.corpus import stopwords
     from nltk.tokenize import ToktokTokenizer
 
@@ -128,7 +127,7 @@ def app():
 
             
             with st.spinner('Checking for null values...'):
-                st.write('Checking for null values. Do not proceed if we find a null value.')
+                st.write('Checking for any null values in the dataset. Will not proceed if a null value is found.')
                 st.write(train.isnull().sum())
                 st.success('No null values found.')
 
@@ -230,7 +229,7 @@ def app():
             
             st.subheader('Negative Sentiment')
             
-            st.write('Display the word cloud of the negative sentiment')
+            st.write('Word cloud of the negative sentiment')
             
             text = " ".join(result[result['Sentiment'] == 'Negative']['text'])
             fig = plt.figure(figsize = (8, 4))
@@ -250,7 +249,7 @@ def app():
             sns.set_context('notebook', font_scale= 1)
             fig = plt.figure(figsize=(8,4))
             sns.barplot(y = df['Word'], x= df['Frequency'], palette= 'summer')
-            plt.title("Most Commonly Used Words of the Negative Sentiment")
+            plt.title("Negative Sentiment Most Commonly Used Words")
             plt.xlabel("Frequency")
             plt.ylabel("Words")
             st.pyplot(fig)
@@ -258,7 +257,7 @@ def app():
             
             st.subheader('Positive Sentiment')
             
-            st.write('Display the word cloud of the positive sentiment')
+            st.write('Word cloud of the positive sentiment')
             
             text = " ".join(result[result['Sentiment'] == 'Positive']['text'])
             fig = plt.figure(figsize = (8, 4))
@@ -278,7 +277,7 @@ def app():
             sns.set_context('notebook', font_scale= 1)
             fig = plt.figure(figsize=(8,4))
             sns.barplot(y = df['Word'], x= df['Frequency'], palette= 'summer')
-            plt.title("Most Commonly Used Words of the Positive Sentiment")
+            plt.title("Positive Sentiment Most Commonly Used Words")
             plt.xlabel("Frequency")
             plt.ylabel("Words")
             st.pyplot(fig)
