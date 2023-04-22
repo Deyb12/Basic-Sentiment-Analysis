@@ -290,7 +290,6 @@ def app():
             else:
                 st.error('Error: Unable to generate CSV file.', icon="🚨")
                 
-st.markdown(footer,unsafe_allow_html=True)
 # run the app
 if __name__ == "__main__":
     app()
