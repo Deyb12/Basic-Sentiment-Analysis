@@ -211,7 +211,7 @@ def app():
 
                 counts = result['Sentiment'].value_counts()
                 st.write(counts)
-                st.subheader('Sentiment Graphs')
+                st.markdown("<h1 style='text-align: center; font-size: 20px;'>Sentiment Graphs</h1>", unsafe_allow_html=True)
                 #reads the sample count from the previous line
                 labels = ['Negative','Positive']
                 sizes = [counts[0], counts[1]]
