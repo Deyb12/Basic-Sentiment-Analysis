@@ -213,7 +213,7 @@ def app():
 
             counts = result['Sentiment'].value_counts()
             st.write(counts)
-            
+            st.subheader('Sentiment Graphs')
             #reads the sample count from the previous line
             labels = ['Negative','Positive']
             sizes = [counts[0], counts[1]]
