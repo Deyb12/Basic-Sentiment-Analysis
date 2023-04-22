@@ -49,7 +49,7 @@ def app():
     f'<div style="display: flex; justify-content: center;"><img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGFhNzYxNmQyZTgxNjYyYzc0MTQ2MWY3N2Q5YWM3MTIyY2VlY2ZmNyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PXM/yQozijZ4xS8krYs1Rp/giphy.gif" style="width:100%; max-width:600px;" /></div>',
     unsafe_allow_html=True
 )
-    st.write('<h4 style="font-family: monospace; font-weight:italic; color: #D4AF37;">© Dave Fagarita</h4>', unsafe_allow_html=True)
+    st.write('<p style="font-style:italic; color: #D4AF37;">© Dave Fagarita</p>', unsafe_allow_html=True)
 
     with st.echo(code_location='below'):
         def custom_remove_stopwords(text, is_lower_case=False):
