@@ -233,7 +233,7 @@ def app():
             text = " ".join(result[result['Sentiment'] == 'Negative']['text'])
             fig = plt.figure(figsize = (8, 4))
             wordcloud = WordCloud(max_words=500, height= 800, width = 1500,  \
-                                  background_color="black", colormap= 'viridis').generate(text)
+                                  background_color="black", colormap= 'inferno').generate(text)
             plt.imshow(wordcloud, interpolation='bilinear')
             plt.axis('off')
             st.pyplot(fig)
