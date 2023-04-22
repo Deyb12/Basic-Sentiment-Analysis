@@ -40,14 +40,13 @@ def app():
     # Add text to the left column
     with left_column:
         st.subheader('Sentiment Analysis')
-        st.write('')
-        st.subheader('Survey Topic')
-        st.write('')
+        st.write('This sentiment analysis will check whether the student of ISAT University Students will agree or disagree that it is more necessary to study grammar than to practice conversation skills.')
+        st.write('The respondent of my analysis are from the said University. Special thanks to my highschool friend (Currently enrolled at ISAT-U Miagao Campus) that help me gather and distribute the survey form.')
 
     # Load and show image in the right column
     with right_column:
         image = 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGFhNzYxNmQyZTgxNjYyYzc0MTQ2MWY3N2Q5YWM3MTIyY2VlY2ZmNyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PXM/yQozijZ4xS8krYs1Rp/giphy.gif'
-        st.image(image, width=300)
+        st.image(image, width=400)
 
 
     
