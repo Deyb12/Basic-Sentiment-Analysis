@@ -19,15 +19,15 @@ from collections import Counter
 
 def app():
     
-    nltk.download('stopwords')
+    import nltk
     from nltk.corpus import stopwords
-    stopwords_list = stopwords.words('english')
-    #no and not are excluded from stopwords
-    stopwords_list.remove('no')
-    stopwords_list.remove('not')
+    from nltk.tokenize import ToktokTokenizer
+
+    nltk.download('stopwords')
+    stopwords_list = set(stopwords.words('english')) - {'no', 'not'}
     tokenizer = ToktokTokenizer()
 
-    st.title("Sentiment Analysis on AI Making CS Professionals Obsolete")      
+    st.title("Sentiment Analysis")      
     st.subheader("(c) Dave Fagarita")
 
     st.subheader('Sentiment Analysis')
