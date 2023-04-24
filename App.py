@@ -39,8 +39,8 @@ def app():
     # Add text to the left column
     with left_column:
         st.subheader('Sentiment Analysis')
-        st.write('This sentiment analysis will check whether the students of ISAT University Students will agree or disagree that it is more necessary to study grammar than to practice conversation skills.')
-        st.write('The respondents in my analysis are from the aforementioned university.\n\nP.S. I would like to express my special thanks to my high school friends, who are currently enrolled at ISAT-U Miagao Campus, for helping me gather and distribute the survey form.')
+        st.write('This sentiment analysis will check whether the students of ISAT University Students will agree or disagree that it is more necessary to study grammar than to practice conversation skills.\n')
+        st.write('The respondents in my analysis are from the aforementioned university, and I acquired 60 responses from them.\n\nP.S. I would like to express my special thanks to my high school friends, who are currently enrolled at ISAT-U Miagao Campus, for helping me gather and distribute the survey form.')
 
     # Load and show image in the right column
     with right_column:
